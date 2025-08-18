@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خطط الأسعار - Wellness & Fitness</title>
+    <style>
+        /* --- Google Fonts --- */
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap');
+
+        /* --- Global Styles & Variables --- */
+        :root {
+            --primary-color: #007BFF; /* Blue - Professional & Trustworthy */
+            --primary-hover-color: #0056b3;
+            --secondary-color: #17a2b8; /* Teal - Accent */
+            --light-bg: #f8f9fa;
+            --white-color: #FFFFFF;
+            --dark-text: #212529;
+            --light-text: #6c757d;
+            --border-color: #dee2e6;
+            --border-radius: 12px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --box-shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --font-family: 'Tajawal', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.7;
+            text-align: right;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* --- Header & Navigation --- */
+        .header {
+            background-color: var(--white-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.7em;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-right: 35px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--light-text);
+            font-weight: 500;
+            font-size: 1em;
+            transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            right: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .hamburger .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--dark-text);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* --- Page Header Section --- */
+        .page-header {
+            padding: 80px 0 60px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--white-color) 80%, var(--light-bg) 100%);
+        }
+
+        .page-header h1 {
+            font-size: 3em;
+            font-weight: 800;
+            color: var(--dark-text);
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            font-size: 1.2em;
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* --- Pricing Section --- */
+        .pricing-section {
+            padding: 60px 0 100px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pricing-card {
+            background-color: var(--white-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 40px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        .pricing-card.recommended {
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+        
+        .recommend-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 5px 20px;
+            font-size: 0.9em;
+            font-weight: 700;
+            border-radius: 20px;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.6em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark-text);
+        }
+
+        .price {
+            font-size: 3.2em;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: var(--dark-text);
+        }
+
+        .price span {
+            font-size: 0.4em;
+            font-weight: 500;
+            color: var(--light-text);
+        }
+        
+        .pricing-card.recommended .price {
+            color: var(--primary-color);
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 35px;
+            text-align: right;
+        }
+
+        .features-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            font-size: 1.05em;
+        }
+        
+        .features-list li svg {
+            color: var(--secondary-color);
+            margin-left: 10px;
+            flex-shrink: 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            width: 100%;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-color);
+            background-color: var(--white-color);
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            transform: translateY(-3px);
+        }
+        
+        .pricing-card.recommended .cta-button {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+        }
+        
+        .pricing-card.recommended .cta-button:hover {
+            background-color: var(--primary-hover-color);
+            border-color: var(--primary-hover-color);
+        }
+
+        /* --- FAQ Section --- */
+        .faq-section {
+            padding: 80px 0;
+            background-color: var(--white-color);
+        }
+        
+        .faq-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .faq-header h2 {
+            font-size: 2.5em;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        
+        .faq-accordion {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: right;
+            padding: 25px 10px;
+            font-family: var(--font-family);
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--dark-text);
+            transition: color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--primary-color);
+        }
+        
+        .faq-question .arrow {
+            transition: transform 0.3s ease;
+            margin-right: 15px;
+        }
+        
+        .faq-item.active .faq-question .arrow {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+        }
+        
+        .faq-answer p {
+            padding: 0 10px 25px 10px;
+            color: var(--light-text);
+            font-size: 1.05em;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--dark-text);
+            color: #e9ecef;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .footer-links a {
+            color: #e9ecef;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer .copyright {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #adb5bd;
+        }
+
+        /* --- Modal Styles --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--white-color);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-content h3 {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark-text);
+        }
+
+        .modal-content p {
+            font-size: 1.1em;
+            color: var(--light-text);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .modal-buttons .modal-btn-confirm,
+        .modal-buttons .modal-btn-cancel {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-family: var(--font-family);
+            font-size: 1em;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .modal-btn-confirm {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+        }
+
+        .modal-btn-confirm:hover {
+            background-color: var(--primary-hover-color);
+            transform: translateY(-2px);
+        }
+
+        .modal-btn-cancel {
+            background-color: #e9ecef;
+            color: var(--dark-text);
+        }
+
+        .modal-btn-cancel:hover {
+            background-color: #ced4da;
+        }
+
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 73px;
+                background-color: var(--white-color);
+                width: 100%;
+                height: calc(100vh - 73px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.4s ease-in-out;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 25px 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            .pricing-card.recommended {
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2.5em; }
+            .page-header p { font-size: 1.1em; }
+            .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .price { font-size: 3em; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+<header class="header">
+    <div class="container navbar">
+        <a href="index.html" class="logo">Wellness & Fitness</a>
+        <ul class="nav-links">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="features.html">الميزات</a></li>
+            <li><a href="pricing.html" class="active">الأسعار</a></li>
+            <li><a href="gallery.html">صور التطبيق</a></li>
+            <li><a href="contact.html">تواصل معنا</a></li>
+            <li><a href="about.html">من نحن</a></li>
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </div>
+</header>
+
+
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1>خطط اشتراك مرنة</h1>
+                <p>اختر الخطة التي تناسب احتياجاتك وابدأ رحلتك نحو حياة أفضل اليوم.</p>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="pricing-section">
+            <div class="container">
+                <div class="pricing-grid">
+                    <!-- Monthly Plan -->
+                    <div class="pricing-card">
+                        <h3>الاشتراك الشهري</h3>
+                        <div class="price">50<span> ﷼/شهرياً</span></div>
+                        <ul class="features-list">
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>الوصول الكامل لجميع الميزات</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>تحديثات مستمرة للمحتوى</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>دعم فني سريع</li>
+                        </ul>
+                        <button class="cta-button subscribe-btn">اشترك الآن</button>
+                    </div>
+
+                    <!-- Annual Plan (Recommended) -->
+                    <div class="pricing-card recommended">
+                        <div class="recommend-badge">الأكثر توفيراً</div>
+                        <h3>الاشتراك السنوي</h3>
+                        <div class="price">500<span> ﷼/سنوياً</span></div>
+                        <ul class="features-list">
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg><b>توفير شهرين مجاناً</b></li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>جميع مزايا الاشتراك الشهري</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>خصومات حصرية على المنتجات</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>دعم فني متميز وأولوية في الرد</li>
+                        </ul>
+                        <button class="cta-button subscribe-btn">ابدأ تجربتك السنوية</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <div class="faq-header">
+                    <h2>أسئلة شائعة</h2>
+                </div>
+                <div class="faq-accordion">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            ما هي طرق الدفع المتاحة؟
+                            <span class="arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>اذهب لصفحة تواصل معنا وتواصل مع الادمن ليعطيك خيارات الاشتراك ويرسل لك رمز التفعيل.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                
+            </div>
+            <p class="copyright">© 2025 Wellness & Fitness. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- Subscription Modal -->
+    <div class="modal-overlay" id="subscriptionModal">
+        <div class="modal-content">
+            <h3>تفعيل الاشتراك</h3>
+            <p>قم بتحميل النسخة VIP، ومن داخل البرنامج اختر الاشتراك الذي يعجبك وتواصل مع الادمن ليفعل لك الاشتراك.</p>
+            <div class="modal-buttons">
+                <!-- استبدل # بالرابط الفعلي للتحميل -->
+                <a href="#" class="modal-btn-confirm">تحميل النسخة المدفوعة الأن</a>
+                <button class="modal-btn-cancel">الغاء</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const currentlyActive = document.querySelector('.faq-item.active');
+                if (currentlyActive && currentlyActive !== item) {
+                    currentlyActive.classList.remove('active');
+                    currentlyActive.querySelector('.faq-answer').style.maxHeight = 0;
+                }
+
+                item.classList.toggle('active');
+                const answer = item.querySelector('.faq-answer');
+                if (item.classList.contains('active')) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                } else {
+                    answer.style.maxHeight = 0;
+                }
+            });
+        });
+
+        // Subscription Modal Logic
+        const subscribeButtons = document.querySelectorAll('.subscribe-btn');
+        const modalOverlay = document.getElementById('subscriptionModal');
+        const modalCancelButton = document.querySelector('.modal-btn-cancel');
+
+        function openModal() {
+            modalOverlay.classList.add('active');
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+        }
+
+        subscribeButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal();
+            });
+        });
+
+        modalCancelButton.addEventListener('click', closeModal);
+
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                closeModal();
+            }
+        });
+
+    </script>
+
+</body>
+</html>
