@@ -256,16 +256,18 @@
         }
         
         .vip-cta .vip-button {
-            background: var(--secondary-color);
-            color: var(--dark-text);
-            padding: 12px 35px;
-            font-size: 1.1em;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: all var(--transition-speed) ease;
-            box-shadow: 0 4px 15px rgba(233, 196, 106, 0.4);
-        }
+    background: var(--secondary-color);
+    color: var(--dark-text);
+    padding: 10px 20px; /* قللنا قليلاً */
+    font-size: 1em;     /* قللنا الحجم */
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all var(--transition-speed) ease;
+    box-shadow: 0 4px 15px rgba(233, 196, 106, 0.4);
+    white-space: nowrap; /* لا يسمح بالنزول لسطر جديد */
+}
+
         
         .vip-cta .vip-button:hover {
              background-color: #e3b953; /* Darker gold */
