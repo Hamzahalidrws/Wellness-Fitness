@@ -325,6 +325,24 @@
             .story-text h2 { font-size: 2.2em; }
             .section-title { font-size: 2.2em; }
         }
+
+
+        /* الحجم الافتراضي للصورة في الجوال */
+.story-image img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* تكبير الصورة في الشاشات الكبيرة (أجهزة الكمبيوتر) */
+@media (min-width: 1024px) {
+    .story-image img {
+        max-width: 350px; /* زود الحجم حسب رغبتك */
+    }
+}
+
     </style>
 </head>
 <body>
